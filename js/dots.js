@@ -11,16 +11,6 @@ var programFill = function ( context ) {
 	context.fill();
 }
 
-var programStroke = function ( context ) {
-	context.lineWidth = 0.05;
-	context.beginPath();
-	context.arc( 0, 0, 1, 0, PI2, true );
-	context.closePath();
-	context.stroke();
-}
-
-var mouse = { x: 0, y: 0 }, INTERSECTED;
-
 init();
 animate();
 
@@ -65,11 +55,10 @@ function animate() {
 	render();
 }
 
-var radius = 600;
+var radius = 800;
 var theta = 0;
 
 function render() {
-
 	// rotate camera
 	theta += 0.04 + 0.1 * (1674 / screenWidth);
 
@@ -77,37 +66,6 @@ function render() {
 	camera.position.y = radius * Math.sin( theta * Math.PI / 360 );
 	camera.position.z = radius * Math.cos( theta * Math.PI / 360 );
 	camera.lookAt( scene.position );
-
-	// find intersections
-
-	camera.updateMatrixWorld();
-
-	var vector = new THREE.Vector3( mouse.x, mouse.y, 0.5 );
-	projector.unprojectVector( vector, camera );
-
-	var ray = new THREE.Ray( camera.position, vector.subSelf( camera.position ).normalize() );
-
-	var intersects = ray.intersectObjects( scene.children );
-
-
-	if ( intersects.length > 0 ) {
-
-		if ( INTERSECTED != intersects[ 0 ].object ) {
-
-			if ( INTERSECTED ) INTERSECTED.material.program = programStroke;
-
-			INTERSECTED = intersects[ 0 ].object;
-			INTERSECTED.material.program = programFill;
-
-		}
-
-	} else {
-
-		if ( INTERSECTED ) INTERSECTED.material.program = programStroke;
-
-		INTERSECTED = null;
-
-	}
 
 	renderer.render( scene, camera );
 
