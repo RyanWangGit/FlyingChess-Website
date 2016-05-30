@@ -20,7 +20,7 @@ html * {
 
 body {
   font-size: 100%;
-  font-family: "Roboto", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+  font-family: 'VisbyRoundCF-Bo3823ef02e5e29', "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
   background-color: transparent;
 }
 
@@ -30,7 +30,13 @@ a {
 }
 
 img {
+  position: absolute;
+  left: 0;
   max-width: 100%;
+}
+
+.image{
+  width: 100%;
 }
 
 h1, h2 {
@@ -41,15 +47,24 @@ p{
   color: rgb(60,72,88);
 }
 
-img{
+video{
   position: absolute;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
+  
 }
 
 table, th, td{
   font-size: 22px;
   color: black;
+}
+
+@media only screen and (max-width: 850px){
+  table, th, td{
+    font-size: 17px;
+  }
 }
 
 table{
@@ -98,6 +113,8 @@ Modules - reusable parts of our design
 
 .linker{
   font-weight: bold;
+  text-decoration: underline;
+  color: rgb(0,158,235);
 }
 
 .marvel-device{
@@ -239,6 +256,7 @@ html, body {
   }
 }
 
+
 .cd-product-intro {
   padding: 50px 5%;
   text-align: center;
@@ -252,11 +270,11 @@ html, body {
   line-height: 1.5;
 }
 .cd-product-intro p {
-  padding: 0 0 20px;
+  padding: 0 0 25px;
   font-size: 22px;
   font-size: 1.2rem;
   line-height: 1.8;
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto;
 }
 .cd-product-intro .cd-triggers:after {
@@ -270,16 +288,19 @@ html, body {
   line-height: 40px;
   margin-right: 8px;
 }
+
 @media only screen and (min-width: 480px) {
   .cd-product-intro {
     padding: 50px 10%;
   }
 }
+
 @media only screen and (min-width: 850px) {
   .cd-product-intro {
     padding: 50px 15%;
   }
 }
+
 @media only screen and (min-width: 1070px) {
   .cd-product-intro {
     /* Force Hardware Acceleration in WebKit */
@@ -334,6 +355,7 @@ html, body {
 #cd-product-tour {
   position: relative;
 }
+
 @media only screen and (min-width: 1070px) {
   #cd-product-tour {
     width: 100%;
@@ -382,16 +404,21 @@ html, body {
   font-size: 2.0rem;
 }
 .cd-single-item p {
-  padding: 10px 0 50px;
-  font-size: 16px;
-  font-size: 0.875rem;
+  padding: 0 0 40px;
+  font-size: 18px;
+  font-size: 1.0rem;
   line-height: 1.6;
 }
+
 @media only screen and (min-width: 480px) {
   .cd-single-item {
     padding: 50px 10% 120px;
   }
+  .cd-single-item p{
+    padding: 0 0 40px;
+  }
 }
+
 @media only screen and (min-width: 850px) {
   .cd-single-item {
     padding: 50px 15% 120px;
@@ -411,6 +438,7 @@ html, body {
     float: right;
   }
 }
+
 @media only screen and (min-width: 1070px) {
   .cd-single-item {
     position: absolute;
@@ -420,10 +448,10 @@ html, body {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: 0;
+    right: 100px;
     text-align: left;
     border-top: none;
-    padding: 0;
+    padding: 50px;
     visibility: visible;
   }
   .cd-single-item.cd-not-visible {
@@ -459,6 +487,12 @@ html, body {
     -moz-transition: -moz-transform 0.3s 0s, opacity 0.3s;
     transition: transform 0.3s, opacity 0.3s;
   }
+  @media only screen and (min-width: 1400px){
+    .cd-single-item .cd-caption {
+      left: 50%;
+    }
+  }
+  
   .is-product-tour .cd-single-item.cd-active .cd-caption {
     opacity: 1;
   }
@@ -476,76 +510,83 @@ html, body {
     float: left;
   }
 }
-@media only screen and (min-width: 1070px) {
-.cd-slider-nav {
-  /* product discover slider navigation */
+
+.cd-slider-nav{
   display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 80px;
 }
-.cd-slider-nav:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.cd-slider-nav a {
-  position: relative;
-  display: block;
-  height: 100%;
-  width: 50%;
-  float: left;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-  color: transparent;
-  background: rgb(91,191,21);
-}
-.no-touch .cd-slider-nav a:hover {
-  background: rgb(90,212,6);
-}
-.cd-slider-nav a::before {
-  /*this is the bacgrounf arrow - we have been used a before element to change the opacity on hover*/
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  bottom: auto;
-  right: auto;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -o-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  width: 24px;
-  height: 16px;
-  opacity: .2;
-  background: url(../img/cd-arrow.svg) no-repeat center center;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: opacity 0.2s;
-  -moz-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-.no-touch .cd-slider-nav a:hover::before {
-  opacity: 1;
-}
-.cd-slider-nav .cd-next {
-  border-left: 1px solid #3f435f;
-}
-.cd-slider-nav .cd-next::before {
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-  -ms-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-  -o-transform: translateX(-50%) translateY(-50%) rotate(180deg);
-  transform: translateX(-50%) translateY(-50%) rotate(180deg);
-}
+
 @media only screen and (min-width: 1070px) {
   .cd-slider-nav {
+    /* product discover slider navigation */
     display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 80px;
   }
+  .cd-slider-nav:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .cd-slider-nav a {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 50%;
+    float: left;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    color: transparent;
+    background: rgb(91,191,21);
+  }
+  .no-touch .cd-slider-nav a:hover {
+    background: rgb(90,212,6);
+  }
+  .cd-slider-nav a::before {
+    /*this is the bacgrounf arrow - we have been used a before element to change the opacity on hover*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 24px;
+    height: 16px;
+    opacity: .2;
+    background: url(../img/cd-arrow.svg) no-repeat center center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+  }
+  .no-touch .cd-slider-nav a:hover::before {
+    opacity: 1;
+  }
+  .cd-slider-nav .cd-next {
+    border-left: 1px solid #3f435f;
+  }
+
+
+  .cd-slider-nav .cd-next::before {
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    -moz-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    -o-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  }
+}
+
+
+@media only screen and (min-width: 1070px) {
   .cd-slider-nav a {
     visibility: hidden;
     opacity: 0;
@@ -569,6 +610,7 @@ html, body {
   }
 }
 
+
 .cd-loader {
   /*top loading bar*/
   position: fixed;
@@ -579,3 +621,4 @@ html, body {
   background-color: #ec505e;
   display: none;
 }
+
