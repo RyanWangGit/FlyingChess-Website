@@ -70,7 +70,9 @@ jQuery(document).ready(function($){
     function showProductIntro() {
         $('header').removeClass('slide-down');
         $('.cd-main-content').removeClass('is-product-tour');
-        $('.cd-active').find('video').get(0).pause();
+        var video = $('.cd-active').find('video').get(0)
+        if (video)
+            video.pause();
         $('.cd-single-item').find('video').each(function(){
             $(this).get(0).currentTime = 0;
         });
