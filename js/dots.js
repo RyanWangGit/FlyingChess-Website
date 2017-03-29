@@ -37,7 +37,7 @@ function init() {
     }, false);
 }
 
-var radius = window.innerWidth;
+    radius = window.innerWidth;
 var theta = 0;
 var phi = 0;
 
