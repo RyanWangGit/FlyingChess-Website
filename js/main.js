@@ -84,6 +84,10 @@ jQuery(document).ready(function($){
         active.addClass('cd-not-visible');
     }
 
+    function setVisible(active) {
+        active.removeClass('cd-not-visible');
+    }
+
     function updateSlider(active, direction) {
         var selected;
         if( direction === 'next' ) {
@@ -101,13 +105,10 @@ jQuery(document).ready(function($){
                    active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
         }
-        //update visible slider
-        selected.removeClass('cd-not-visible');
-        //update slider navigation (in case we reached the last slider)
-        updateSliderNav(selected);
-    }
+        // update visible slider
+        setVisible(selected);
 
-    function updateSliderNav(selected) {
+        // update slider navigation (in case we reached the last slider)
         ( selected.is(':last-child') ) ? $('.cd-next').addClass('cd-inactive') : $('.cd-next').removeClass('cd-inactive') ;
         $('.cd-loader').stop().hide().css('width', 0);
     }
