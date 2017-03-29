@@ -30,21 +30,29 @@ function init() {
 
 
 function refreshScene(particle_count) {
-    scene.children = scene.children.slice(0, 0);
-    for (let i = 0; i < particle_count - scene.children.length; i ++) {
-        var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
-            color: Math.random() * 0x808080 + 0x808080,
-            program: function(context){
-                context.beginPath();
-                context.arc(0, 0, 1, 0, Math.PI * 2, true);
-                context.closePath();
-                context.fill();
-            }}));
-        particle.position.x = (Math.random() - 0.5) * window.innerWidth;
-        particle.position.y = (Math.random() - 0.5) * window.innerWidth;
-        particle.position.z = (Math.random() - 0.5) * window.innerWidth;
-        particle.scale.x = particle.scale.y = Math.random() * 0.01 * window.innerWidth * window.devicePixelRatio;
-        scene.add(particle);
+    // remove those redundant particles
+    if(scene.children.length > particle_count) {
+        for(let i = 0; i < scene.children.length - particle_count; i++) {
+            scene.children.splice(i, 1);
+        }
+    }
+    // add more particles if there are not enough
+    else {
+        for(let i = 0; i < particle_count - scene.children.length; i ++) {
+            var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
+                color: Math.random() * 0x808080 + 0x808080,
+                program: function(context){
+                    context.beginPath();
+                    context.arc(0, 0, 1, 0, Math.PI * 2, true);
+                    context.closePath();
+                    context.fill();
+                }}));
+            particle.position.x = (Math.random() - 0.5) * window.innerWidth;
+            particle.position.y = (Math.random() - 0.5) * window.innerWidth;
+            particle.position.z = (Math.random() - 0.5) * window.innerWidth;
+            particle.scale.x = particle.scale.y = Math.random() * 0.01 * window.innerWidth * window.devicePixelRatio;
+            scene.add(particle);
+        }
     }
 }
 
