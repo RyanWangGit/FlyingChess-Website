@@ -19,7 +19,6 @@ jQuery(document).ready(function($){
         event.preventDefault();
         var activeSlide = $('.cd-active');
         if(activeSlide.is(':first-child')) {
-            //in this case - switch from product tour div to product intro div
             // in this case - switch from product tour div to product intro div
             showProductIntro();
         } else {
@@ -80,7 +79,7 @@ jQuery(document).ready(function($){
         });
     }
 
-    function setInvisible(active){
+    function setInvisible(active) {
         active.addClass('cd-not-visible');
     }
 
