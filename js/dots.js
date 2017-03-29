@@ -37,9 +37,13 @@ function init() {
     }, false);
 }
 
-    radius = window.innerWidth;
+var radius;
 var theta = 0;
 var phi = 0;
+
+window.addEventListener('resize', function () {
+    radius = window.innerWidth * 0.5;
+});
 
 function animate() {
 	requestAnimationFrame(animate);
