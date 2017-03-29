@@ -19,6 +19,7 @@ function init() {
 	container.id = 'bgc';
 	container.style.position = 'fixed';
 	container.style.zIndex = '-5';
+	container.style.zoom = '.5';
 	document.body.appendChild( container );
 	
 	camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -26,9 +27,9 @@ function init() {
 
 	scene = new THREE.Scene();
 	
-	screenWidth = document.body.offsetWidth;
+	screenWidth = window.innerWidth * 2;
 
-	for ( var i = 0; i < 1.5 * screenWidth / 20; i ++ ) {
+	for ( var i = 0; i < 1.5 * screenWidth / 40; i ++ ) {
 		var particle = new THREE.Particle( new THREE.ParticleCanvasMaterial( { color: Math.random() * 0x808080 + 0x808080, program: programFill } ) );
 		particle.position.x = Math.random() * 800 - 400;
 		particle.position.y = Math.random() * 800 - 400;
@@ -38,7 +39,7 @@ function init() {
 	}
 	projector = new THREE.Projector();
 	renderer = new THREE.CanvasRenderer();
-	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.setSize( window.innerWidth * 2, window.innerHeight * 2);
 	container.appendChild( renderer.domElement );
 	window.addEventListener( 'resize', onWindowResize, false );
 }
