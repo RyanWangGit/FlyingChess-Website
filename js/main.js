@@ -53,7 +53,7 @@ jQuery(document).ready(function($){
         });
     });
 
-    function showProductIntro() {
+    function showMainPage() {
         $('header').removeClass('slide-down');
         $('.cd-main-content').removeClass('is-product-tour');
         var video = $('.cd-active').find('video').get(0);
@@ -101,7 +101,7 @@ jQuery(document).ready(function($){
         if(direction == 'prev') {
             if(activeSlide.is(':first-child')) {
                 // in this case - switch from product tour div to product intro div
-                showProductIntro();
+                showMainPage();
             } else {
                 updateSlider(activeSlide, direction);
             }
