@@ -96,7 +96,7 @@ jQuery(document).ready(function($){
         $('.cd-loader').stop().hide().css('width', 0);
     }
 
-    function updatePage(active, direction) {
+    function updatePage(direction) {
         var activeSlide = $('.cd-active');
         if(direction == 'prev') {
             if(activeSlide.is(':first-child')) {
