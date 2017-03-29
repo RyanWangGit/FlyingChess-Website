@@ -13,7 +13,6 @@ jQuery(document).ready(function($){
         }
     });
 
-    //update the slider - desktop only
     // update the slider - desktop only
     $('.cd-prev').on('click', function(event){
         event.preventDefault();
@@ -89,17 +88,15 @@ jQuery(document).ready(function($){
 
     function updateSlider(active, direction) {
         var selected;
+        // on Firefox CSS transition/animation fails when parent element changes visibility attribute
+        // so we have to change .cd-single-item childrens attributes after having changed its visibility value
         if( direction === 'next' ) {
             selected = active.next();
-            // on Firefox CSS transition/animation fails when parent element changes visibility attribute
-            // so we have to change .cd-single-item childrens attributes after having changed its visibility value
             setTimeout(function() {
                    active.removeClass('cd-active').addClass('cd-hidden').next().removeClass('cd-move-right').addClass('cd-active').one('webkitTr ansitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
         } else {
             selected = active.prev();
-            // on Firefox CSS transition/animation fails when parent element changes visibility attribute
-            // so we have to change .cd-single-item childrens attributes after having changed its visibility value
             setTimeout(function() {
                    active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
