@@ -116,10 +116,7 @@ jQuery(document).ready(function($){
             }
         }
         else {
-            if(activeSlide.is(':first-child')) {
-                // in this case - switch from product tour div to product intro div
-                showProductIntro();
-            } else {
+            if(!activeSlide.is(':last-child')) {
                 updateSlider(activeSlide, direction);
             }
         }
