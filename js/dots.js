@@ -1,52 +1,56 @@
 var camera, scene, renderer;
+var radius = window.innerWidth * 0.5, theta = 0, phi = 0;
+
 
 function init() {
-	var container = document.createElement('background');
-	container.style.position = 'fixed';
-	container.style.zIndex = '-5';
-	container.style.zoom = 1.0 / window.devicePixelRatio;
-	document.body.appendChild(container);
-	
-	camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
-	camera.position.set(0, 0, 0);
+    var container = document.createElement('background');
+    container.style.position = 'fixed';
+    container.style.zIndex = '-5';
+    container.style.zoom = 1.0 / window.devicePixelRatio;
+    document.body.appendChild(container);
+    
+    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.set(0, 0, 0);
 
-	scene = new THREE.Scene();
+    scene = new THREE.Scene();
+    refreshScene(window.innerWidth / 5);
 
-	for (let i = 0; i < window.innerWidth / 20; i ++) {
-		var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
-			color: Math.random() * 0x808080 + 0x808080,
-			program: function(context){
+    renderer = new THREE.CanvasRenderer();
+    renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    window.addEventListener('resize', function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        radius = window.innerWidth * 0.5;
+        renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
+        refreshScene(window.innerWidth / 5);
+    }, false);
+}
+
+
+function refreshScene(particle_count) {
+    scene.children = scene.children.slice(0, 0);
+    for (let i = 0; i < particle_count - scene.children.length; i ++) {
+        var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
+            color: Math.random() * 0x808080 + 0x808080,
+            program: function(context){
                 context.beginPath();
                 context.arc(0, 0, 1, 0, Math.PI * 2, true);
                 context.closePath();
                 context.fill();
-			}}));
-		particle.position.x = Math.random() * 800 - 400;
-		particle.position.y = Math.random() * 800 - 400;
-		particle.position.z = Math.random() * 800 - 400;
-		particle.scale.x = particle.scale.y = Math.random() * 4 + 4;
-		scene.add(particle);
-	}
-	renderer = new THREE.CanvasRenderer();
-	renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-	container.appendChild(renderer.domElement);
-
-	window.addEventListener('resize', function () {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-    }, false);
+            }}));
+        particle.position.x = (Math.random() - 0.5) * window.innerWidth;
+        particle.position.y = (Math.random() - 0.5) * window.innerWidth;
+        particle.position.z = (Math.random() - 0.5) * window.innerWidth;
+        particle.scale.x = particle.scale.y = Math.random() * 0.01 * window.innerWidth;
+        scene.add(particle);
+    }
 }
 
-var radius;
-var theta = 0;
-var phi = 0;
-
-window.addEventListener('resize', function () {
-    radius = window.innerWidth * 0.5;
-});
 
 function animate() {
-	requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     // rotate camera
     theta += 0.04;
     phi += 0.02;
