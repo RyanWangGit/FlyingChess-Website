@@ -30,13 +30,13 @@ function init() {
 	renderer = new THREE.CanvasRenderer();
 	renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
 	container.appendChild(renderer.domElement);
-	window.addEventListener('resize', function (camera, renderer) {
+
+	window.addEventListener('resize', function () {
         camera.aspect = window.innerWidth / window.innerHeight;
         renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     }, false);
 }
 
-var radius = 800;
 var radius = window.innerWidth;
 var theta = 0;
 var phi = 0;
