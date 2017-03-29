@@ -23,20 +23,11 @@ jQuery(document).ready(function($){
         updatePage('next');
     });
 
-    $(document).keyup(function(event) {
+    $(document).on('keyup', function(event) {
         if(event.which === '37') {
-            var activeSlide = $('.cd-active');
-            if(activeSlide.is(':first-child')) {
-                // in this case - switch from product tour div to product intro div
-                showProductIntro();
-            } else {
-                updateSlider(activeSlide, 'prev');
-            }
+            updatePage('prev');
         } else if(event.which === '39') {
-            var activeSlide = $('.cd-active');
-            console.log(activeSlide.is(':last-child'));
-            if(!activeSlide.is(':last-child'))
-                updateSlider(activeSlide, 'next');
+            updatePage('next');
         }
     });
 
