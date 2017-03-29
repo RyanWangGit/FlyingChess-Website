@@ -8,7 +8,7 @@ function init() {
 	document.body.appendChild(container);
 	
 	camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
-	camera.position.set(0, 300, 500);
+	camera.position.set(0, 0, 0);
 
 	scene = new THREE.Scene();
 
@@ -37,16 +37,19 @@ function init() {
 }
 
 var radius = 800;
+var radius = window.innerWidth;
 var theta = 0;
+var phi = 0;
 
 function animate() {
 	requestAnimationFrame(animate);
     // rotate camera
-    theta += 0.04 + 0.1 * (1674 / (window.innerWidth * window.devicePixelRatio));
+    theta += 0.04;
+    phi += 0.02;
 
-    camera.position.x = radius * Math.sin( theta * Math.PI / 360 );
-    camera.position.y = radius * Math.sin( theta * Math.PI / 360 );
-    camera.position.z = radius * Math.cos( theta * Math.PI / 360 );
+    camera.position.x = radius * Math.sin(theta * Math.PI / 180) * Math.cos(phi * Math.PI / 180);
+    camera.position.y = radius * Math.cos(theta * Math.PI / 180) * Math.sin(phi * Math.PI / 180);
+    camera.position.z = radius * Math.cos(phi * Math.PI / 180);
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
