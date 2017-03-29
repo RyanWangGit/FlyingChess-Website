@@ -43,7 +43,7 @@ function refreshScene(particle_count) {
         particle.position.x = (Math.random() - 0.5) * window.innerWidth;
         particle.position.y = (Math.random() - 0.5) * window.innerWidth;
         particle.position.z = (Math.random() - 0.5) * window.innerWidth;
-        particle.scale.x = particle.scale.y = Math.random() * 0.01 * window.innerWidth;
+        particle.scale.x = particle.scale.y = Math.random() * 0.01 * window.innerWidth * window.devicePixelRatio;
         scene.add(particle);
     }
 }
