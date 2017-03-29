@@ -16,22 +16,15 @@ jQuery(document).ready(function($){
     // update the slider - desktop only
     $('.cd-prev').on('click', function(event){
         event.preventDefault();
-        var activeSlide = $('.cd-active');
-        if(activeSlide.is(':first-child')) {
-            // in this case - switch from product tour div to product intro div
-            showProductIntro();
-        } else {
-            updateSlider(activeSlide, 'prev');
-        }
+        updatePage('prev');
     });
     $('.cd-next').on('click', function(event){
         event.preventDefault();
-        var activeSlide = $('.cd-active');
-        updateSlider(activeSlide, 'next');
+        updatePage('next');
     });
 
-    $(document).keyup(function(event){
-        if(event.which === '37' && $('.cd-main-content').hasClass('is-product-tour') ) {
+    $(document).keyup(function(event) {
+        if(event.which === '37') {
             var activeSlide = $('.cd-active');
             if(activeSlide.is(':first-child')) {
                 // in this case - switch from product tour div to product intro div
@@ -39,9 +32,11 @@ jQuery(document).ready(function($){
             } else {
                 updateSlider(activeSlide, 'prev');
             }
-        } else if(event.which === '39' && $('.cd-main-content').hasClass('is-product-tour')) {
+        } else if(event.which === '39') {
             var activeSlide = $('.cd-active');
-            updateSlider(activeSlide, 'next');
+            console.log(activeSlide.is(':last-child'));
+            if(!activeSlide.is(':last-child'))
+                updateSlider(activeSlide, 'next');
         }
     });
 
@@ -70,7 +65,7 @@ jQuery(document).ready(function($){
     function showProductIntro() {
         $('header').removeClass('slide-down');
         $('.cd-main-content').removeClass('is-product-tour');
-        var video = $('.cd-active').find('video').get(0)
+        var video = $('.cd-active').find('video').get(0);
         if (video)
             video.pause();
         $('.cd-single-item').find('video').each(function(){
@@ -101,11 +96,33 @@ jQuery(document).ready(function($){
                    active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
         }
+
         // update visible slider
         setVisible(selected);
 
         // update slider navigation (in case we reached the last slider)
         ( selected.is(':last-child') ) ? $('.cd-next').addClass('cd-inactive') : $('.cd-next').removeClass('cd-inactive') ;
         $('.cd-loader').stop().hide().css('width', 0);
+    }
+
+    function updatePage(active, direction) {
+        var activeSlide = $('.cd-active');
+        if(direction == 'prev') {
+            if(activeSlide.is(':first-child')) {
+                // in this case - switch from product tour div to product intro div
+                showProductIntro();
+            } else {
+                updateSlider(activeSlide, direction);
+            }
+        }
+        else {
+            if(activeSlide.is(':first-child')) {
+                // in this case - switch from product tour div to product intro div
+                showProductIntro();
+            } else {
+                updateSlider(activeSlide, direction);
+            }
+        }
+
     }
 });
