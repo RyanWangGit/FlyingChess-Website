@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Ignore IntelliJ generated folders
+.idea/
+
+# Ignore node folders
+node_modules/
+
+# Ignore the public folder
+public/
