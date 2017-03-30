@@ -5,12 +5,7 @@ jQuery(document).ready(function($){
     // on desktop, switch from product intro div to product tour div
     $('a[href="#cd-product-tour"]').on('click', function(event){
         event.preventDefault();
-        $('header').addClass('slide-down');
-        if($(window).width() < MqL) {
-            $('body,html').animate({'scrollTop': $('#cd-product-tour').offset().top - 30 }, 200);
-        } else {
-            $('.cd-main-content').addClass('is-product-tour');
-        }
+        updatePage('next');
     });
 
     // update the slider - desktop only
@@ -23,10 +18,11 @@ jQuery(document).ready(function($){
         updatePage('next');
     });
 
+    // setup key control
     $(document).on('keyup', function(event) {
-        if(event.which === '37') {
+        if(event.which === 37) {
             updatePage('prev');
-        } else if(event.which === '39') {
+        } else if(event.which === 39) {
             updatePage('next');
         }
     });
@@ -64,6 +60,15 @@ jQuery(document).ready(function($){
         });
     }
 
+    function hideMainPage() {
+        $('header').addClass('slide-down');
+        if($(window).width() < MqL) {
+            $('body,html').animate({'scrollTop': $('#cd-product-tour').offset().top - 30 }, 200);
+        } else {
+            $('.cd-main-content').addClass('is-product-tour');
+        }
+    }
+
     function setInvisible(active) {
         active.addClass('cd-not-visible');
     }
@@ -76,15 +81,15 @@ jQuery(document).ready(function($){
         var selected;
         // on Firefox CSS transition/animation fails when parent element changes visibility attribute
         // so we have to change .cd-single-item childrens attributes after having changed its visibility value
-        if( direction === 'next' ) {
+        if(direction === 'next') {
             selected = active.next();
             setTimeout(function() {
-                   active.removeClass('cd-active').addClass('cd-hidden').next().removeClass('cd-move-right').addClass('cd-active').one('webkitTr ansitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
+                active.removeClass('cd-active').addClass('cd-hidden').next().removeClass('cd-move-right').addClass('cd-active').one('webkitTr ansitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
         } else {
             selected = active.prev();
             setTimeout(function() {
-                   active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
+                active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
             }, 50);
         }
 
@@ -98,6 +103,8 @@ jQuery(document).ready(function($){
 
     function updatePage(direction) {
         var activeSlide = $('.cd-active');
+        console.log(activeSlide);
+        console.log(activeSlide.is(':first-child'));
         if(direction == 'prev') {
             if(activeSlide.is(':first-child')) {
                 // in this case - switch from product tour div to product intro div
@@ -107,6 +114,9 @@ jQuery(document).ready(function($){
             }
         }
         else {
+            if(activeSlide.is(':first-child')) {
+                hideMainPage();
+            }
             if(!activeSlide.is(':last-child')) {
                 updateSlider(activeSlide, direction);
             }
