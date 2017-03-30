@@ -54,7 +54,7 @@ jQuery(document).ready(function($){
         $('.cd-main-content').removeClass('is-product-tour');
         $('.cd-active').find('video').each(function() {
             $(this).get(0).pause();
-        })
+        });
         $('.cd-single-item').find('video').each(function(){
             $(this).get(0).currentTime = 0;
         });
