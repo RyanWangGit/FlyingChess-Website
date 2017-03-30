@@ -110,9 +110,8 @@ jQuery(document).ready(function($){
             } else {
                 updateSlider(activeSlide, direction);
             }
-        }
-        else {
             if(activeSlide.is(':first-child')) {
+        } else {
                 hideMainPage();
             }
             if(!activeSlide.is(':last-child')) {
