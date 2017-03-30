@@ -84,6 +84,7 @@ jQuery(document).ready(function($){
             // if move previous to the main page
             if(activeSlide.is(':first-child')) {
                 showMainPage();
+                return;
             } else {
                 selectedSlide = activeSlide.prev();
                 activeSlide.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(activeSlide));
@@ -92,6 +93,7 @@ jQuery(document).ready(function($){
             // if move next from main page
             if(!$('.cd-main-content').hasClass('is-product-tour')) {
                 hideMainPage();
+                return;
             } else if(activeSlide.is(':last-child')) {
                 return;
             } else {
