@@ -32,13 +32,13 @@ function init() {
 function refreshScene(particle_count) {
     // remove those redundant particles
     if(scene.children.length > particle_count) {
-        for(let i = 0; i < scene.children.length - particle_count; i++) {
+        for(var i = 0; i < scene.children.length - particle_count; i++) {
             scene.children.splice(i, 1);
         }
     }
     // add more particles if there are not enough
     else {
-        for(let i = 0; i < particle_count - scene.children.length; i ++) {
+        for(var i = 0; i < particle_count - scene.children.length; i ++) {
             var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
                 color: Math.random() * 0x808080 + 0x808080,
                 program: function(context){
