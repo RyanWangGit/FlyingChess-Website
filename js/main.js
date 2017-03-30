@@ -2,13 +2,13 @@ jQuery(document).ready(function($){
     // update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
     var MqL = 1070;
 
-    // on desktop, switch from product intro div to product tour div
+    // on desktop, on click the Details button
     $('a[href="#cd-product-tour"]').on('click', function(event){
         event.preventDefault();
         updatePage('next');
     });
 
-    // update the slider - desktop only
+    // on desktop, on click the slider button
     $('.cd-prev').on('click', function(event){
         event.preventDefault();
         updatePage('prev');
