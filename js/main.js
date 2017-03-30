@@ -5,25 +5,25 @@ jQuery(document).ready(function($){
     // on desktop, on click the Details button
     $('a[href="#cd-product-tour"]').on('click', function(event){
         event.preventDefault();
-        updatePage('next');
+        updateSlide('next');
     });
 
     // on desktop, on click the slider button
     $('.cd-prev').on('click', function(event){
         event.preventDefault();
-        updatePage('prev');
+        updateSlide('prev');
     });
     $('.cd-next').on('click', function(event){
         event.preventDefault();
-        updatePage('next');
+        updateSlide('next');
     });
 
     // on hit the ← or → button
     $(document).on('keyup', function(event) {
         if(event.which === 37) {
-            updatePage('prev');
+            updateSlide('prev');
         } else if(event.which === 39) {
-            updatePage('next');
+            updateSlide('next');
         }
     });
 
@@ -75,7 +75,7 @@ jQuery(document).ready(function($){
         active.removeClass('cd-not-visible');
     }
 
-    function updatePage(direction) {
+    function updateSlide(direction) {
         var activeSlide = $('.cd-active');
         var selectedSlide;
         if(direction === 'prev') {
