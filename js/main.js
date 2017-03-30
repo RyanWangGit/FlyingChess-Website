@@ -104,17 +104,17 @@ jQuery(document).ready(function($){
     function updatePage(direction) {
         var activeSlide = $('.cd-active');
         if(direction === 'prev') {
+            // if move previous to the main page
             if(activeSlide.is(':first-child')) {
-                // in this case - switch from product tour div to product intro div
                 showMainPage();
             } else {
                 updateSlider(activeSlide, direction);
             }
-            if(activeSlide.is(':first-child')) {
         } else {
+            // if move next from main page
+            if(!$('.cd-main-content').hasClass('is-product-tour')) {
                 hideMainPage();
-            }
-            if(!activeSlide.is(':last-child')) {
+            } else if(!activeSlide.is(':last-child')) {
                 updateSlider(activeSlide, direction);
             }
         }
