@@ -18,7 +18,7 @@ jQuery(document).ready(function($){
         updatePage('next');
     });
 
-    // setup key control
+    // on hit the ← or → button
     $(document).on('keyup', function(event) {
         if(event.which === 37) {
             updatePage('prev');
