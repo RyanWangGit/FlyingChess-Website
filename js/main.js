@@ -107,6 +107,5 @@ jQuery(document).ready(function($){
         // update slider navigation (in case we reached the last slider)
         ( selectedSlide.is(':last-child') ) ? $('.cd-next').addClass('cd-inactive') : $('.cd-next').removeClass('cd-inactive') ;
         $('.cd-loader').stop().hide().css('width', 0);
-
     }
 });
