@@ -1,4 +1,4 @@
-jQuery(document).ready(function($){
+$(document).ready(function(){
     // update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
     var MqL = 1070;
 
