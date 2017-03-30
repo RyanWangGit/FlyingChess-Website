@@ -118,32 +118,33 @@ Modules - reusable parts of our design
 }
 
 .marvel-device{
-    zoom: 0.5;
+    transform-origin:top left;
+    transform: scale(0.5);
     position: relative;
 }
 
 @media only screen and (min-width: 450px){
     .marvel-device{
-        zoom: 0.6;
+        transform: scale(0.6);
     }
 }
 
 @media only screen and (min-width: 850px){
     .marvel-device{
-        zoom: 0.7;
+        transform: scale(0.7);
     }
 }
 
 @media only screen and (min-width: 1070px){
     .marvel-device{
-        zoom: 0.8;
+        transform: scale(0.8);
         bottom: 150px;
     }
 }
 
 @media only screen and (min-width: 1400px){
     .marvel-device{
-        zoom: 0.9;
+        transform: scale(0.9);
     }
 }
 
