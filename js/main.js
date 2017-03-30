@@ -103,8 +103,6 @@ jQuery(document).ready(function($){
 
     function updatePage(direction) {
         var activeSlide = $('.cd-active');
-        console.log(activeSlide);
-        console.log(activeSlide.is(':first-child'));
         if(direction == 'prev') {
             if(activeSlide.is(':first-child')) {
                 // in this case - switch from product tour div to product intro div
