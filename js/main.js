@@ -75,47 +75,34 @@ jQuery(document).ready(function($){
         active.removeClass('cd-not-visible');
     }
 
-    function updateSlider(active, direction) {
-        var selected;
-        // on Firefox CSS transition/animation fails when parent element changes visibility attribute
-        // so we have to change .cd-single-item childrens attributes after having changed its visibility value
-        if(direction === 'next') {
-            selected = active.next();
-            setTimeout(function() {
-                active.removeClass('cd-active').addClass('cd-hidden').next().removeClass('cd-move-right').addClass('cd-active').one('webkitTr ansitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
-            }, 50);
-        } else {
-            selected = active.prev();
-            setTimeout(function() {
-                active.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(active));
-            }, 50);
-        }
-
-        // update visible slider
-        setVisible(selected);
-
-        // update slider navigation (in case we reached the last slider)
-        ( selected.is(':last-child') ) ? $('.cd-next').addClass('cd-inactive') : $('.cd-next').removeClass('cd-inactive') ;
-        $('.cd-loader').stop().hide().css('width', 0);
-    }
-
     function updatePage(direction) {
         var activeSlide = $('.cd-active');
+        var selectedSlide;
         if(direction === 'prev') {
             // if move previous to the main page
             if(activeSlide.is(':first-child')) {
                 showMainPage();
             } else {
-                updateSlider(activeSlide, direction);
+                selectedSlide = activeSlide.prev();
+                activeSlide.removeClass('cd-active').addClass('cd-move-right').prev().addClass('cd-active').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(activeSlide));
             }
         } else {
             // if move next from main page
             if(!$('.cd-main-content').hasClass('is-product-tour')) {
                 hideMainPage();
-            } else if(!activeSlide.is(':last-child')) {
-                updateSlider(activeSlide, direction);
+            } else if(activeSlide.is(':last-child')) {
+                return;
+            } else {
+                selectedSlide = activeSlide.next();
+                activeSlide.removeClass('cd-active').addClass('cd-hidden').next().removeClass('cd-move-right').addClass('cd-active').one('webkitTr ansitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', setInvisible(activeSlide));
             }
         }
+
+        setVisible(selectedSlide);
+
+        // update slider navigation (in case we reached the last slider)
+        ( selectedSlide.is(':last-child') ) ? $('.cd-next').addClass('cd-inactive') : $('.cd-next').removeClass('cd-inactive') ;
+        $('.cd-loader').stop().hide().css('width', 0);
 
     }
 });
