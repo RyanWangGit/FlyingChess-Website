@@ -118,7 +118,7 @@ Modules - reusable parts of our design
 }
 
 .marvel-device{
-    transform-origin:top left;
+    transform-origin: left;
     transform: scale(0.5);
     position: relative;
 }
