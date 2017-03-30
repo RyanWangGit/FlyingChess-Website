@@ -52,7 +52,9 @@ jQuery(document).ready(function($){
     function showMainPage() {
         $('header').removeClass('slide-down');
         $('.cd-main-content').removeClass('is-product-tour');
-        var video = $('.cd-active').find('video').pause();
+        var video = $('.cd-active').find('video').get(0);
+        if (video)
+            video.pause();
         $('.cd-single-item').find('video').each(function(){
             $(this).get(0).currentTime = 0;
         });
