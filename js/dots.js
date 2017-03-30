@@ -6,7 +6,8 @@ function init() {
     var container = document.createElement('background');
     container.style.position = 'fixed';
     container.style.zIndex = '-5';
-    container.style.zoom = 1.0 / window.devicePixelRatio;
+    container.style.transformOrigin = 'top left';
+    container.style.transform = 'scale(' + 1.0 / window.devicePixelRatio + ')';
     document.body.appendChild(container);
     
     camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
