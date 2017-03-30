@@ -275,7 +275,7 @@ html, body {
     font-size: 22px;
     font-size: 1.2rem;
     line-height: 1.8;
-    max-width: 580px;
+    max-width: 500px;
     margin: 0 auto;
 }
 .cd-product-intro .cd-triggers:after {
@@ -474,7 +474,7 @@ html, body {
     .cd-single-item .cd-caption {
         position: relative;
         left: 40%;
-        top: 150px;
+        top: 200px;
         width: 60%;
         float: right;
         margin: auto;
