@@ -332,6 +332,13 @@ html, body {
 @media only screen and (min-width: 850px) {
     .cd-product-intro {
         padding: 50px 15%;
+    .cd-product-intro h1 {
+        font-size: 50px;
+        font-size: 3.0rem;
+    }
+    .cd-product-intro p {
+        font-size: 30px;
+        font-size: 1.8rem;
     }
 }
 
