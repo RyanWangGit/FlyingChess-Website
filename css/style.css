@@ -301,7 +301,6 @@ html, body {
     font-size: 1.0rem;
     line-height: 1.8;
     margin: 0 auto;
-    max-width: 550px;
 }
 .cd-product-intro .cd-triggers:after {
     content: "";
@@ -384,6 +383,7 @@ html, body {
         font-size: 1.4rem;
         padding: 10px 0 47px;
         margin: 0;
+        max-width: 550px;
     }
     .cd-product-intro .btn {
         margin-right: 15px;
