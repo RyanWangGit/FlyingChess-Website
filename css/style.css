@@ -284,7 +284,7 @@ html, body {
 
 
 .cd-product-intro {
-    padding: 50px 5%;
+    padding: 10% 5% 10% 5%;
     text-align: center;
 }
 .cd-product-intro h1 {
@@ -296,7 +296,7 @@ html, body {
     line-height: 1.5;
 }
 .cd-product-intro p {
-    padding: 0 0 40px 0;
+    padding: 0 0 5% 0;
     font-size: 16px;
     font-size: 1.0rem;
     line-height: 1.8;
@@ -315,9 +315,6 @@ html, body {
 }
 
 @media only screen and (min-width: 480px) {
-    .cd-product-intro {
-        padding: 50px 10%;
-    }
     .cd-product-intro h1 {
         font-size: 40px;
         font-size: 2.4rem;
@@ -329,9 +326,6 @@ html, body {
 }
 
 @media only screen and (min-width: 850px) {
-    .cd-product-intro {
-        padding: 5% 0 10% 0;
-    }
     .cd-product-intro h1 {
         font-size: 50px;
         font-size: 3.0rem;
