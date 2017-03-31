@@ -14,7 +14,7 @@ function init() {
     camera.position.set(0, 0, 0);
 
     scene = new THREE.Scene();
-    refreshScene(window.innerWidth / 5);
+    refreshScene(window.innerWidth * 0.15);
 
     renderer = new THREE.CanvasRenderer();
     renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
@@ -25,7 +25,7 @@ function init() {
         camera.updateProjectionMatrix();
         radius = window.innerWidth * 0.5;
         renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-        refreshScene(window.innerWidth / 5);
+        refreshScene(window.innerWidth * 0.15);
     }, false);
 }
 
