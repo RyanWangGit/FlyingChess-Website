@@ -86,7 +86,7 @@ Modules - reusable parts of our design
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     color: #ffffff;
     background-color: rgb(31,182,255);
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -289,19 +289,19 @@ html, body {
 }
 .cd-product-intro h1 {
     margin-bottom: 10px;
-    font-weight: 100;
-    font-size: 45px;
+    font-weight: bold;
+    font-size: 30px;
     font-size: 2.0rem;
     font-weight: 700;
     line-height: 1.5;
 }
 .cd-product-intro p {
-    padding: 0 0 25px;
-    font-size: 22px;
-    font-size: 1.2rem;
+    padding: 0 0 30px;
+    font-size: 16px;
+    font-size: 1.0rem;
     line-height: 1.8;
-    max-width: 500px;
     margin: 0 auto;
+    max-width: 550px;
 }
 .cd-product-intro .cd-triggers:after {
     content: "";
@@ -318,6 +318,14 @@ html, body {
 @media only screen and (min-width: 480px) {
     .cd-product-intro {
         padding: 50px 10%;
+    }
+    .cd-product-intro h1 {
+        font-size: 40px;
+        font-size: 2.4rem;
+    }
+    .cd-product-intro p {
+        font-size: 25px;
+        font-size: 1.4rem;
     }
 }
 
@@ -440,7 +448,13 @@ html, body {
     .cd-single-item {
         padding: 50px 10% 120px;
     }
+    .cd-single-item h2 {
+        font-size: 40px;
+        font-size: 2.5rem;
+    }
     .cd-single-item p{
+        font-size: 30px;
+        font-size: 1.6rem;
         padding: 0 0 40px;
     }
 }
@@ -458,7 +472,7 @@ html, body {
         width: 100%;
         height: 350px;
         float: left;
-        margin-top: 180px;
+        margin-top: 20px;
     }
     .cd-single-item:nth-child(2n) .cd-caption {
         float: right;
