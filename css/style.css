@@ -161,6 +161,7 @@ Modules - reusable parts of our design
 
 @media only screen and (min-width: 1070px){
     .marvel-device{
+        transform-origin: left;
         transform: scale(0.8);
         bottom: 150px;
     }
