@@ -435,7 +435,7 @@ html, body {
     padding: 5px 0 2% 0;
     font-size: 18px;
     font-size: 1.0rem;
-    line-height: 1.6;
+    line-height: 1.8;
 }
 
 @media only screen and (min-width: 480px) {
