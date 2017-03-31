@@ -39,7 +39,8 @@ function refreshScene(particle_count) {
     }
     // add more particles if there are not enough
     else {
-        for(var i = 0; i < particle_count - scene.children.length; i ++) {
+        const NUMBER_TO_ADD = particle_count - scene.children.length;
+        for(var i = 0; i < NUMBER_TO_ADD; i ++) {
             var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
                 color: Math.random() * 0x808080 + 0x808080,
                 program: function(context){
