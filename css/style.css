@@ -117,48 +117,41 @@ Modules - reusable parts of our design
     color: rgb(0,158,235);
 }
 
+/*
+ * TODO: Find out why marvel-device isn't centered
+ * Stop using this ugly methods.
+ */
 .marvel-device {
     transform-origin: 5% 50%;
     transform: scale(0.5);
 
 }
-
 @media only screen and (min-width: 480px){
     .marvel-device{
         transform: scale(0.6);
     }
 }
-
-
 @media only screen and (min-width: 570px){
     .marvel-device{
         transform-origin: 10% 50%;
         transform: scale(0.7);
     }
 }
-
-
 @media only screen and (min-width: 700px){
     .marvel-device{
         transform-origin: 30% 50%;
     }
 }
-
-
 @media only screen and (min-width: 800px){
     .marvel-device{
         transform-origin: 35% 50%;
     }
 }
-
-
 @media only screen and (min-width: 900px){
     .marvel-device{
         transform-origin: center;
     }
 }
-
-
 @media only screen and (min-width: 1070px){
     .marvel-device{
         transform-origin: left;
@@ -166,7 +159,6 @@ Modules - reusable parts of our design
         bottom: 150px;
     }
 }
-
 @media only screen and (min-width: 1400px){
     .marvel-device{
         transform: scale(0.9);
