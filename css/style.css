@@ -330,7 +330,8 @@ html, body {
 
 @media only screen and (min-width: 850px) {
     .cd-product-intro {
-        padding: 50px 15%;
+        padding: 5% 0 10% 0;
+    }
     .cd-product-intro h1 {
         font-size: 50px;
         font-size: 3.0rem;
@@ -433,7 +434,7 @@ html, body {
 
 .cd-single-item {
     /* product tour - single list item */
-    padding: 50px 5% 120px;
+    padding: 50px 0% 50px;
     width: 100%;
     text-align: center;
     border-top: 1px solid #494e6e;
@@ -453,7 +454,7 @@ html, body {
 
 @media only screen and (min-width: 480px) {
     .cd-single-item {
-        padding: 50px 10% 120px;
+        padding: 50px 0% 120px;
     }
     .cd-single-item h2 {
         font-size: 40px;
