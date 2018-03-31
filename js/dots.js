@@ -17,7 +17,7 @@ function init() {
     refreshScene(window.innerWidth * 0.15);
 
     renderer = new THREE.CanvasRenderer();
-    renderer.setClearColorHex(0xffffff, 1);
+    renderer.setClearColor(0xffffff, 1);
     renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
