@@ -9,7 +9,7 @@ function init() {
     container.style.transformOrigin = 'top left';
     container.style.transform = 'scale(' + 1.0 / window.devicePixelRatio + ')';
     document.body.appendChild(container);
-    
+
     camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 10000);
     camera.position.set(0, 0, 0);
 
@@ -17,6 +17,7 @@ function init() {
     refreshScene(window.innerWidth * 0.15);
 
     renderer = new THREE.CanvasRenderer();
+    renderer.setClearColorHex(0xffffff, 1);
     renderer.setSize(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
     container.appendChild(renderer.domElement);
 
@@ -41,7 +42,7 @@ function refreshScene(particle_count) {
     else {
         const NUMBER_TO_ADD = particle_count - scene.children.length;
         for(var i = 0; i < NUMBER_TO_ADD; i ++) {
-            var particle = new THREE.Particle(new THREE.ParticleCanvasMaterial({
+            var particle = new THREE.Sprite(new THREE.SpriteCanvasMaterial({
                 color: Math.random() * 0x808080 + 0x808080,
                 program: function(context){
                     context.beginPath();
