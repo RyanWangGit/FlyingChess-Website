@@ -40,7 +40,7 @@ function refreshScene(particleCount) {
     }
     // add more particles if there are not enough
     else {
-        const NUMBER_TO_ADD = particle_count - scene.children.length;
+        const NUMBER_TO_ADD = particleCount - scene.children.length;
         for(var i = 0; i < NUMBER_TO_ADD; i ++) {
             var particle = new THREE.Sprite(new THREE.SpriteCanvasMaterial({
                 color: Math.random() * 0x808080 + 0x808080,
