@@ -31,10 +31,10 @@ function init() {
 }
 
 
-function refreshScene(particle_count) {
+function refreshScene(particleCount) {
     // remove those redundant particles
     if(scene.children.length > particle_count) {
-        for(var i = 0; i < scene.children.length - particle_count; i++) {
+        for(var i = 0; i < scene.children.length - particleCount; i++) {
             scene.children.splice(i, 1);
         }
     }
